@@ -69,14 +69,9 @@ nosetests
 This will search for test files in the `tests` subdirectory and run them.
 
 
-## Contributing
-
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
-
-
 ## Authors
 
-* **Sean Mosely* - *Initial work* - [PurpleBooth](https://github.com/JohnnyFalvo)
+* **Sean Mosely* - *Initial work* - [SeanMoselyNLNZ](https://github.com/SeanMoselyNLNZ)
 
 ## License
 
