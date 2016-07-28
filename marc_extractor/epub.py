@@ -16,6 +16,59 @@ copyright_year_range = []
 for i in range(1900, 2150):
     copyright_year_range.append(str(i))
 
+DEFAULT_CONF = """
+[leader]
+record_status=n
+type_of_record=a
+bibliographic_level=m
+encoding_level=3
+descriptive_cataloguing_form=i
+multipart_resource_record_level=
+
+[006]
+form_of_material=m
+type_of_computer_file=d
+
+[007]
+type_of_resource=c
+specific_material_designation=r
+color=m
+dimensions=n
+sound=|
+image_bit_depth=nnn
+file_formats=a
+quality_assurance_targets=n
+antecedent=a
+level_of_compression=|
+reformatting_quality=|
+
+[008]
+publication_status=s
+target_audience=
+form_of_item=o
+type_of_computer_file=
+government_publication=
+language=eng
+modified_record=
+cataloguing_source=d
+conference_publication=0
+festshrift=0
+index=0
+literary_form=|
+
+[040]
+indicator_1=
+indicator_2=
+subfield_a=WN
+subfield_b=eng
+subfield_c=WN
+subfield_e=rda
+
+[264]
+subfield_a=Wellington
+"""
+
+
 def _(str):
     if str == '':
         return ' '
@@ -94,9 +147,7 @@ def build_tag_008(tag_008_dict, md_location, ns):
         )
     return tag_008_string
 
-def epub_to_marc(fname, 
-    conf_file=os.path.join(os.path.dirname(os.path.realpath(__file__)),
-        'epub.conf')):
+def epub_to_marc(fname, conf_file=None):
     ns = {
     'n': 'urn:oasis:names:tc:opendocument:xmlns:container',
     'pkg': 'http://www.idpf.org/2007/opf',
@@ -122,7 +173,10 @@ def epub_to_marc(fname,
 
     # Read from the config file
     conf = configparser.ConfigParser()
-    conf.read(conf_file)
+    if conf_file:
+        conf.read(conf_file)
+    else:
+        conf.read_string(DEFAULT_CONF)
     leader_dict = {}
     tag_005_dict = {}
     tag_006_dict = {}

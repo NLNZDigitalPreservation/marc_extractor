@@ -11,6 +11,7 @@ config = {
     'author_email': 'My email',
     'version': '0.1',
     'install_requires': ['lxml', 'nose', 'pymarc'],
+    'packages': ['marc_extractor'],
     'py_modules': ['epub', 'nlnz_epub'],
     'name': 'marc_extractor'
 }

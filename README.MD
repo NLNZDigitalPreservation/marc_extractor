@@ -9,6 +9,10 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisities
 
 Python and pip. The package has been built with Python 3 and virtualenv.
+Please note: this package installs the following dependencies:
+lxml (for xml parsing)
+nose (for testing)
+pymarc (for building MARC records)
 
 
 ### Installing
@@ -26,13 +30,34 @@ Change into the marc_extractor directory
 cd marc_extractor
 ```
 
-Install the package by calling setup.py
+Install the package by executing setup.py
 
 ```
 python setup.py install
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+And here is a basic demo using the Python Interpreter:
+```
+$ python
+Python 3.4.3 (default, Oct 14 2015, 20:28:29) 
+[GCC 4.8.4] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> from marc_extractor.epub import epub_to_marc
+>>> marc_record = epub_to_marc('path/to/file/test.epub')
+>>> print(marc_record)
+=LDR  00000nam a22000003i 4500
+=005  20160728121637.0
+=006  m\\\\\o\\d\\\\\\\\
+=007  crmn|nnnana||
+=008  160728s\\\\\\\\nz\\\\\\o\\\\\00|\0\\\eng\d
+=040  \\$aWN$beng$erda$cWN
+=245  00$aSample ePub file -- Title /$cWindows 95 Guy
+=264  \1$aWellington :$bFake Publishers, inc., $c2015-11-12
+
+>>> 
+
+```
+The MARC record can be added to using the pymarc modules.
 
 ## Running the tests
 
